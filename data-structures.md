@@ -4,7 +4,47 @@
 
 ## Basic Data Structures
 
-### Stack
+### Node
+
+A very basic data structure that can contain some value and a reference to another node. Used as a building block for many other data structures.
+
+```javascript
+const nodeA = new Node({data: "apple"})
+const nodeB = new Node({data: "banana"})
+
+nodeA.getData()       // returns the data ("apple") of the node
+nodeA.setNext(nodeB)  // changes the reference to the next node and returns the original node
+nodeA.getNext()       // returns the next node, or null if no next node
+```
+
+### Linked List ( using Nodes )
+
+A list of [nodes](#node) that link to each other, like a daisy-chain.
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Linked_list) [edited]:
+
+> A linear collection of data elements, called nodes, each pointing to the next node by means of a pointer. It is a data structure consisting of a group of nodes which together represent a sequence.
+
+Specifically, the following is a _singly-linked_ list (as opposed to a [doubly-linked list](#doubly-linked-list-using-double-nodes)).
+
+```javascript
+const linkedList = new LinkedList()
+linkedList.getHeadNode()           // Returns the first node in the list
+linkedList.getTailNode()           // Returns the last node in the list
+linkedList.contains("bananas")     // Determines whether or not the list contains the provided data
+linkedList.find("bananas")         // Returns the first node containing the provided data, or -1 if not found
+linkedList.insert("bananas")       // Inserts a node (with the provided data) to the tail of the list
+linkedList.insertFirst("bananas")  // Inserts a node (with the provided data) to the head of the list
+linkedList.insertBefore("bananas", "apples") // Inserts a node (with data "apples") before the first node containing "bananas"
+linkedList.insertAfter("apples", "bananas")  // Inserts a node (with data "bananas") after the first node containing "apples"
+linkedList.remove()                // Removes the tail node from the list
+linkedList.removeFirst()           // Removes the head node from the list
+linkedList.isEmpty()               // Determines if the list is empty or not
+linkedList.size()                  // Returns the size of the list (number of nodes)
+linkedList.clear()                 // Clears the list of all nodes/data
+```
+
+### Stack ( using Nodes )
 
 The classic LIFO (Last-In-First-Out) one-dimensional list.
 
@@ -21,20 +61,9 @@ stack.isEmpty()   // returns true if the stack is empty or false if not.
 stack.length()    // returns the number of elements in the stack.
 ```
 
-#### Node
+To implement a _standard_ stack, use the [Node](#node) data structure in your implementation.
 
-To implement a _standard_ stack, use a **node** data structure in your implementation. You don't need to write tests for this object or expose its interface in the public API. Use this interface as a reference:
-
-```javascript
-const nodeA = new Node({data: "apple"})
-const nodeB = new Node({data: "banana"})
-
-nodeA.getData()       // returns the data ("apple") of the node
-nodeA.setNext(nodeB)  // changes the reference to the next node and returns the original node
-nodeA.getNext()       // returns the next node, or null if no next node
-```
-
-### Queue
+### Queue ( using Nodes )
 
 The classic FIFO (First-In-First-Out) one-dimensional list.
 
@@ -54,7 +83,7 @@ queue.length()       // returns the number of elements in the queue
 
 To implement a _standard_ queue, use the [Node](#node) data structure in your implementation.
 
-### Priority Queue
+### Priority Queue ( using Priority Nodes )
 
 Like a queue, but with _priorities_.
 
@@ -87,6 +116,20 @@ pizzaNode.setNext(saladNode)  // changes the reference to the next node and retu
 pizzaNode.getNext()           // returns the next node or null if none
 ```
 
+### Doubly-Linked List ( using Double Nodes )
+
+The interface for the Doubly-Linked List is the same as the Linked List above, _except_ that it uses a double-link node (see below).
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Doubly_linked_list) [edited]:
+
+> A linked data structure that consists of a set of sequentially linked records called nodes. Each node contains two fields, called _links_, that are references to the previous and to the next node in the sequence of nodes.
+
+#### Double Node
+
+To implement a _standard_ doubly-linked list, use a **double node** data structure in your implementation.
+
+This is the same as the [Node](#node) data structure, except that it also has the methods `.getPrevious()` and `.setPrevious(<DoubleNode>)`. These methods get and set the previous `DoubleNode` in the list.
+
 ### Set
 
 Collection of things, without repetition.
@@ -111,52 +154,11 @@ set.isSubset(otherSet)   // returns true if the set is a subset of otherSet or f
 set.clone()              // returns a cloned set.
 ```
 
-### Linked List
-
-A list of nodes that link to each other, like a daisy-chain.
-
-From [Wikipedia](https://en.wikipedia.org/wiki/Linked_list) [edited]:
-
-> A linear collection of data elements, called nodes, each pointing to the next node by means of a pointer. It is a data structure consisting of a group of nodes which together represent a sequence.
-
-Specifically, the following is a _singly-linked_ list (as opposed to the _doubly-linked_ list below).
-
-```javascript
-const linkedList = new LinkedList()
-linkedList.getHeadNode()           // Returns the first node in the list
-linkedList.getTailNode()           // Returns the last node in the list
-linkedList.contains("bananas")     // Determines whether or not the list contains the provided data
-linkedList.find("bananas")         // Returns the first node containing the provided data, or -1 if not found
-linkedList.insert("bananas")       // Inserts a node (with the provided data) to the tail of the list
-linkedList.insertFirst("bananas")  // Inserts a node (with the provided data) to the head of the list
-linkedList.insertBefore("bananas", "apples") // Inserts a node (with data "apples") before the first node containing "bananas"
-linkedList.insertAfter("apples", "bananas")  // Inserts a node (with data "bananas") after the first node containing "apples"
-linkedList.remove()                // Removes the tail node from the list
-linkedList.removeFirst()           // Removes the head node from the list
-linkedList.isEmpty()               // Determines if the list is empty or not
-linkedList.size()                  // Returns the size of the list (number of nodes)
-linkedList.clear()                 // Clears the list of all nodes/data
-```
-
-To implement a _standard_ queue, use the [Node](#node) data structure in your implementation.
-
-### Doubly-Linked List
-
-The interface for the Doubly-Linked List is the same as the Linked List above, _except_ that it uses a double-link node (see below).
-
-From [Wikipedia](https://en.wikipedia.org/wiki/Doubly_linked_list) [edited]:
-
-> A linked data structure that consists of a set of sequentially linked records called nodes. Each node contains two fields, called _links_, that are references to the previous and to the next node in the sequence of nodes.
-
-#### Double Node
-
-To implement a _standard_ doubly-linked list, use a **double node** data structure in your implementation.
-
-This is the same as the [Node](#node) data structure, except that it also has the methods `.getPrevious()` and `.setPrevious(<DoubleNode>)`. These methods get and set the previous `DoubleNode` in the list.
+_Note: if you haven't worked with sets before, you may want to read about [sets](https://www.mathsisfun.com/sets/sets-introduction.html) and [subsets](https://www.mathsisfun.com/activity/subsets.html)._
 
 ## Advanced Data Structures
 
-### Hash Table
+### Hash Table ( using a LinkedList for collision chaining )
 
 Maps keys to values, like a dictionary or a phone book. Or an object in JavaScript...
 
@@ -164,9 +166,12 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Hash_table) [edited]:
 
 > A data structure used to implement an associative array, a structure that can map keys to values. A hash table uses a hash function to compute an index into an array of _buckets_ or _slots_, from which the desired value can be found.
 
+Collision Chaining: [Wikipedia](http://www.cs.rmit.edu.au/online/blackboard/chapter/05/documents/contribute/chapter/05/chaining.html)
+>  Instead of storing the data directly inside the structure, have a linked list structure at each hash element. That way, all the collision, retrieval and deletion functions can be handled by the list, and the hash function's role is limited mainly to that of a guide to the algorithms, as to which hash element's list to operate on.
+
 ```javascript
 const ht = new HashTable()
-ht.put("name", "Zanzibar")  // adds a key-value pair to the hash table.
+ht.put("name", "Zanzibar")  // adds a key-value pair to the hash table, deal with collisions using chaining
 ht.get("name")              // returns the data associated with key.
 ht.contains("name")         // returns true if the hash table contains the key.
 ht.iterate((k, v) => console.log(`${k}: ${v}`)) // takes a callback function and passes it each key and value in sequence.
@@ -222,11 +227,10 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Directed_graph) [edited]:
 const diGraph = new DirectedGraph()
 diGraph.addVertex('v1')               // adds a vertex to the graph.
 diGraph.hasVertex('v1')               // returns true if the graph contains the vertex or false if not.
-diGraph.addDirection('v1', 'v2', 3)  // adds a direction from 'v1' to 'v2' with a weight (number).
+diGraph.addDirection('v1', 'v2')      // adds a direction from 'v1' to 'v2'.
 diGraph.hasDirection('v1', 'v2')      // returns true if there's a direction from 'v1' to 'v2'.
-diGraph.getDirectionWeight('v1', 'v2') // returns direction weight between v1 & v2 or null if no direction exists.
 diGraph.visit('v1', vertex => console.log(vertex)) // visit all the connected vertices in the graph starting with v1 and apply function on the reached vertex.
-diGraph.findShortestPath('v1', 'v2')  // returns an array of all the shortest paths between two vertices based on the sum of weights.
+diGraph.findPaths('v1', 'v2')         // returns an array of all the paths between two vertices.
 diGraph.removeDirection('v1', 'v2')   // removes an existing direction between 'v1' and 'v2'.
 diGraph.getSeparatedVertices()        // returns an array of all the vertices that are unconnected to the graph (have no direction linking them to another vertex).
 diGraph.removeVertex('v1')            // removes an existing vertex and all its directions (the incoming and outgoing).
