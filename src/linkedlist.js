@@ -54,6 +54,25 @@ export default class LinkedList {
     return false
   }
 
+  find(item) {
+    let cursor = this.head
+
+    while(cursor) {
+      if(cursor.data === item) {
+        console.log('cursor: ', cursor);
+        return cursor
+      } else {
+        cursor = cursor.next
+      }
+    }
+    return -1
+  }
+
+  isEmpty() {
+    if (this.size === 0) {
+      return true
+    } else false
+  }
   // insertAfter(data) {
   //   let linkedNode = new Node(data)
   //   let oldHead = this.head
@@ -62,7 +81,30 @@ export default class LinkedList {
   //   this.size = this.size + 1
   // }
 
+  insertBefore(item, index) {
+    let cursor = this.head
+    let itemNode = new Node(item)
+    //check if you're inserting into an empty node
+    if(this.size === 0) {
+      this.head = this.tail = itemNode
+      return itemNode
+    } else if(this.head.data === index) {
+      //what to do if cursor is head
+      this.head = itemNode
+      this.head.next = cursor
+    } else {
+      //what to do is cursor is in the middle
+      cursor.next = itemNode.next
+      itemNode.next = cursor
+      return cursor
+    }
+    this.size = this.size + 1
+  }
+
 }
+
+
+
 
 
 
@@ -77,16 +119,14 @@ export default class LinkedList {
 
 
 // linkedList.insertAfter("apples", "bananas")  // Inserts a node (with data "bananas") after the first node containing "apples"
+
 // linkedList.insertBefore("bananas", "apples") // Inserts a node (with data "apples") before the first node containing "bananas"
-// linkedList.getHeadNode()           // Returns the first node in the list
-// linkedList.getTailNode()           // Returns the last node in the list
-// linkedList.contains("bananas")     // Determines whether or not the list contains the provided data
-// linkedList.find("bananas")         // Returns the first node containing the provided data, or -1 if not found
 //
 //
 //
 // linkedList.remove()                // Removes the tail node from the list
+
 // linkedList.removeFirst()           // Removes the head node from the list
-// linkedList.isEmpty()               // Determines if the list is empty or not
-// linkedList.size()                  // Returns the size of the list (number of nodes)
+
+
 // linkedList.clear()                 // Clears the list of all nodes/data

@@ -78,6 +78,7 @@ describe('LinkedList', () => {
     })
   })
 
+  //getHeadNode
   context('getHeadNode', () => {
     it('Returns the first node in the list', () => {
       const myLinkedList = new LinkedList()
@@ -88,6 +89,7 @@ describe('LinkedList', () => {
     })
   })
 
+  //getTailNode
   context('getTailNode', () => {
     it('Returns the first node in the list', () => {
       const myLinkedList = new LinkedList()
@@ -98,6 +100,7 @@ describe('LinkedList', () => {
     })
   })
 
+  //contains
   context('contains', () => {
     it('Determines whether or not the list contains the provided data', () => {
       const myLinkedList = new LinkedList()
@@ -110,12 +113,50 @@ describe('LinkedList', () => {
   })
 
   context('contains', () => {
-    it.only('Return false if item does not exist in the linked list', () => {
+    it('Return false if item does not exist in the linked list', () => {
       const myLinkedList = new LinkedList()
       myLinkedList.insert('Plato')
       myLinkedList.insert('Aristotle')
       myLinkedList.insert('Hypatia')
       expect(myLinkedList.contains('Trump')).to.equal(false)
+    })
+  })
+
+//find
+  context('find', () => {
+    it('Returns the first node containing the provided data', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Aristotle')
+      myLinkedList.insert('Hypatia')
+      myLinkedList.insertFirst('Plato')
+      expect( myLinkedList.find('Aristotle').data ).to.equal('Aristotle')
+    })
+  })
+
+  context('find', () => {
+    it('Returns -1 if node not found', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Aristotle')
+      myLinkedList.insert('Hypatia')
+      myLinkedList.insertFirst('Plato')
+      expect(myLinkedList.find('Trump')).to.equal(-1)
+    })
+  })
+
+  context('isEmpty', () => {
+    it('Determines if the list is empty or not', () => {
+      const myLinkedList = new LinkedList()
+      expect(myLinkedList.size).to.equal(0)
+    })
+  })
+
+  context('insertBefore(itemToBeInsertedBeforeCursor, cursorItem)', () => {
+    it.only('Inserts a node (with data "bananas") after the first node containing "apples"', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Aristotle')
+      myLinkedList.insert('Hypatia')
+      myLinkedList.insertBefore('Plato', 'Aristotle')
+      expect(myLinkedList.head.data).to.equal('Plato')
     })
   })
   // //insertAfter
