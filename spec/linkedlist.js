@@ -79,7 +79,7 @@ describe('LinkedList', () => {
   })
 
   context('getHeadNode', () => {
-    it.only('Returns the first node in the list', () => {
+    it('Returns the first node in the list', () => {
       const myLinkedList = new LinkedList()
       myLinkedList.insert('Plato')
       myLinkedList.insert('Aristotle')
@@ -89,12 +89,33 @@ describe('LinkedList', () => {
   })
 
   context('getTailNode', () => {
-    it.only('Returns the first node in the list', () => {
+    it('Returns the first node in the list', () => {
       const myLinkedList = new LinkedList()
       myLinkedList.insert('Plato')
       myLinkedList.insert('Aristotle')
       myLinkedList.insertFirst('Descartes')
       expect( myLinkedList.getTailNode().data ).to.equal('Aristotle')
+    })
+  })
+
+  context('contains', () => {
+    it('Determines whether or not the list contains the provided data', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Descartes')
+      myLinkedList.insert('Aristotle')
+      myLinkedList.insertFirst('Plato')
+        myLinkedList.insertFirst('Hypatia')
+      expect(myLinkedList.contains('Hypatia')).to.equal(true)
+    })
+  })
+
+  context('contains', () => {
+    it.only('Return false if item does not exist in the linked list', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Plato')
+      myLinkedList.insert('Aristotle')
+      myLinkedList.insert('Hypatia')
+      expect(myLinkedList.contains('Trump')).to.equal(false)
     })
   })
   // //insertAfter

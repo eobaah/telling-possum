@@ -41,6 +41,19 @@ export default class LinkedList {
     return this.tail
   }
 
+  contains(item) {
+    let cursor = this.head
+
+    while(cursor) {
+      if(cursor.data === item) {
+        return true
+      } else {
+        cursor = cursor.next
+      }
+    }
+    return false
+  }
+
   // insertAfter(data) {
   //   let linkedNode = new Node(data)
   //   let oldHead = this.head
