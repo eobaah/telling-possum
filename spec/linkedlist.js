@@ -143,6 +143,7 @@ describe('LinkedList', () => {
     })
   })
 
+  //isEmpty
   context('isEmpty', () => {
     it('Determines if the list is empty or not', () => {
       const myLinkedList = new LinkedList()
@@ -150,8 +151,9 @@ describe('LinkedList', () => {
     })
   })
 
-  context('insertBefore(itemToBeInsertedBeforeCursor, cursorItem)', () => {
-    it.only('Inserts a node (with data "bananas") after the first node containing "apples"', () => {
+  //insertBefore
+  context('insertBefore(itemBeforeIndex, index)', () => {
+    it('Inserts a node (with data "bananas") after the first node containing "apples"', () => {
       const myLinkedList = new LinkedList()
       myLinkedList.insert('Aristotle')
       myLinkedList.insert('Hypatia')
@@ -159,15 +161,58 @@ describe('LinkedList', () => {
       expect(myLinkedList.head.data).to.equal('Plato')
     })
   })
-  // //insertAfter
-  // context('insertAfter', () => {
-  //   it('Inserts a node (with data "bananas") after the first node containing "apples"', () => {
-  //     const myLinkedList = new LinkedList()
-  //     myLinkedList.insert('apples')
-  //     myLinkedList.insert('kiwi')
-  //     myLinkedList.insertAfter('bananas')
-  //     expect(myLinkedList)
-  //   })
-  // })
+
+  context('insertBefore(itemBeforeIndex, index)', () => {
+    it('Inserts a node (with data "bananas") if list is empty', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insertBefore('Plato', 'Aristotle')
+      expect(myLinkedList.head.data).to.equal('Plato')
+    })
+  })
+
+  //insertAfter
+  context('insertAfter(itemAfterIndex, index)', () => {
+    it('Inserts a node (with data "bananas") after the first node containing "apples"', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Plato')
+      myLinkedList.insert('Hypatia')
+      myLinkedList.insert('Descartes')
+      myLinkedList.insert('Kant')
+      myLinkedList.insertAfter('Aristotle', 'Plato')
+      expect(myLinkedList.head.next.data).to.equal('Aristotle')
+    })
+  })
+
+  context('insertAfter(itemAfterIndex, index)', () => {
+    it('Inserts a node at the tail end by using insertAfter', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Plato')
+      myLinkedList.insert('Aristotle')
+      myLinkedList.insertAfter('Hypatia', 'Aristotle')
+      expect(myLinkedList.tail.data).to.equal('Hypatia')
+    })
+  })
+
+  context('insertAfter(itemAfterIndex, index)', () => {
+    it('Checks the size of the linkedList after insertion', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Plato')
+      myLinkedList.insert('Aristotle')
+      myLinkedList.insertAfter('Hypatia', 'Aristotle')
+      expect(myLinkedList.size).to.equal(3)
+    })
+  })
+
+  //remove
+  context('remove', () => {
+    it.only('Removes the tail node from the list', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Plato')
+      myLinkedList.insert('Hypatia')
+      myLinkedList.insertAfter('Aristotle', 'Plato')
+      mylinkedList.remove()
+      expect(myLinkedList.tail.data).to.equal('Aristotle')
+    })
+  })
 
 })//closes LinkedList

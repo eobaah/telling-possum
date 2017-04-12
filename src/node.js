@@ -5,6 +5,7 @@ export default class Node {
   constructor(data) {
     this.data = data
     this.next = undefined
+    this.previous = undefined
   }
 
   getData() {
@@ -13,6 +14,11 @@ export default class Node {
 
   setNext(node) {
     this.next = node
+    return this
+  }
+
+  setPrevious(node) {
+    this.previous = node
     return this
   }
 

@@ -93,7 +93,7 @@ export default class LinkedList {
       this.head = itemNode
       this.head.next = cursor
     } else {
-      //what to do is cursor is in the middle
+      //what to do if cursor is in the middle
       cursor.next = itemNode.next
       itemNode.next = cursor
       return cursor
@@ -101,32 +101,51 @@ export default class LinkedList {
     this.size = this.size + 1
   }
 
-}
+  insertAfter(item, index) {
+    let cursor = this.head
+    let itemNode = new Node(item)
+    //check if you're inserting into an empty node
+    if(this.size === 0) {
+      this.head = this.tail = itemNode
+    } else if(this.head.data === index) {
+      //what to do if cursor is head
+      this.head = cursor
+      this.head.next = itemNode
+    } else if (this.tail.data === index) {
+      this.tail = itemNode
+    } else {
+      //what to do if cursor is in the middle
+      itemNode.next = cursor.next.next
+      itemNode = cursor.next
+      // return cursor
+    }
+    this.size = this.size + 1
+  }
+
+  remove() {
+    let removable = this.tail
+    if(this.size === 0) {
+      return 'there is nothing to remove you dummy'
+    } if(this.size === 1) {
+      this.head = this.tail = undefined
+    } else {
+      for (let i =0; i<this.size; i++) {
+        if(i.next.next === undefined) {
+          previous = i.next
+          console.log('previous: ', previous);
+          this.tail = previous
+          console.log('this.tail: ', this.tail);
+        }
+      }
+    }
+    this.size = this.size -1
+  }
+
+}//LinkedList end
 
 
-
-
-
-
-
-// const linkedList = new LinkedList()
-// const linkedNode = new Node({key:'bananas'})
-// const nodeA = new Node({key: 'plato'})
-// const nodeB = new Node({key: 'aristotle'})
-
-
-
-
-
-// linkedList.insertAfter("apples", "bananas")  // Inserts a node (with data "bananas") after the first node containing "apples"
-
-// linkedList.insertBefore("bananas", "apples") // Inserts a node (with data "apples") before the first node containing "bananas"
-//
-//
-//
 // linkedList.remove()                // Removes the tail node from the list
 
 // linkedList.removeFirst()           // Removes the head node from the list
-
 
 // linkedList.clear()                 // Clears the list of all nodes/data
