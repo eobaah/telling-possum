@@ -1,5 +1,3 @@
-'use strict'
-
 class Node {
   constructor(data) {
     this.data = data
@@ -29,8 +27,8 @@ export default class Queue {
   dequeue() {
     let removable = this.tail
     if(this.tail) {
-        this.tail = this.tail.next
-        return removable.data
+      this.tail = this.tail.next
+      return removable.data
     } else {
       return undefined
     }
@@ -39,7 +37,6 @@ export default class Queue {
   front() {
     if(this.size > 0) {
       return this.head
-      console.log('this.head: ', this.head);
     } else return undefined
   }
 
