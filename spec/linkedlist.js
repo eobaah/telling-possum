@@ -205,14 +205,45 @@ describe('LinkedList', () => {
 
   //remove
   context('remove', () => {
-    it.only('Removes the tail node from the list', () => {
+    it('Removes the tail node from the list', () => {
       const myLinkedList = new LinkedList()
       myLinkedList.insert('Plato')
       myLinkedList.insert('Hypatia')
       myLinkedList.insertAfter('Aristotle', 'Plato')
-      mylinkedList.remove()
+      myLinkedList.remove()
       expect(myLinkedList.tail.data).to.equal('Aristotle')
     })
   })
+
+  context('clear', () => {
+    it.only('Clears the list of all nodes/data', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Plato')
+      myLinkedList.insert('Hypatia')
+      myLinkedList.insertAfter('Aristotle', 'Plato')
+      myLinkedList.clear()
+      expect(myLinkedList.head).to.equal(undefined)
+    })
+  })
+  context('clear', () => {
+    it.only('Clears the list of all nodes/data', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Plato')
+      myLinkedList.insert('Hypatia')
+      myLinkedList.insertAfter('Aristotle', 'Plato')
+      myLinkedList.clear()
+      expect(myLinkedList.tail).to.equal(undefined)
+    })
+  })
+  context('clear', () => {
+    it.only('Clears the list of all nodes/data', () => {
+      const myLinkedList = new LinkedList()
+      myLinkedList.insert('Plato')
+      myLinkedList.insert('Hypatia')
+      myLinkedList.clear()
+      expect(myLinkedList.size).to.equal(0)
+    })
+  })
+
 
 })//closes LinkedList

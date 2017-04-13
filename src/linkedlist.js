@@ -141,11 +141,14 @@ export default class LinkedList {
     this.size = this.size -1
   }
 
+  clear() {
+    this.head = this.tail = undefined
+    this.size = 0
+  }
+
 }//LinkedList end
 
 
 // linkedList.remove()                // Removes the tail node from the list
 
 // linkedList.removeFirst()           // Removes the head node from the list
-
-// linkedList.clear()                 // Clears the list of all nodes/data
