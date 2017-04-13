@@ -216,7 +216,7 @@ describe('LinkedList', () => {
   })
 
   context('clear', () => {
-    it.only('Clears the list of all nodes/data', () => {
+    it('Clears the list of all nodes/data', () => {
       const myLinkedList = new LinkedList()
       myLinkedList.insert('Plato')
       myLinkedList.insert('Hypatia')
@@ -226,7 +226,7 @@ describe('LinkedList', () => {
     })
   })
   context('clear', () => {
-    it.only('Clears the list of all nodes/data', () => {
+    it('Clears the list of all nodes/data', () => {
       const myLinkedList = new LinkedList()
       myLinkedList.insert('Plato')
       myLinkedList.insert('Hypatia')
@@ -236,7 +236,7 @@ describe('LinkedList', () => {
     })
   })
   context('clear', () => {
-    it.only('Clears the list of all nodes/data', () => {
+    it('Clears the list of all nodes/data', () => {
       const myLinkedList = new LinkedList()
       myLinkedList.insert('Plato')
       myLinkedList.insert('Hypatia')

@@ -7,12 +7,12 @@ chai.use(chaiChange)
 describe('Stack', () => {
   'use strict'
 
-  it.only('exists', () => {
+  it('exists', () => {
     expect(Stack).to.be.a('function')
   })
 
   context('push()', () => {
-    it.only('pushes an element to the top of the stack.', () => {
+    it('pushes an element to the top of the stack.', () => {
       const myStack = new Stack()
 
       expect(() => myStack.push('Plato'))
@@ -21,7 +21,7 @@ describe('Stack', () => {
   })
 
   context('pop()', () => {
-    it.only('removes an element at the top of the stack.', () => {
+    it('removes an element at the top of the stack.', () => {
       const myStack = new Stack()
       myStack.push('Hypatia')
       myStack.push('Aristotle')
@@ -59,7 +59,7 @@ describe('Stack', () => {
     })
   })
   context('length()', () => {
-    it.only('returns the 0 for an empty stack', () => {
+    it('returns the 0 for an empty stack', () => {
       const myStack = new Stack()
       expect( myStack.length()).to.equal(0)
     })
