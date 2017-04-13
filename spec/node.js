@@ -2,10 +2,7 @@ import chai, { expect } from 'chai'
 import chaiChange from 'chai-change'
 import Node from '../src/node'
 
-chai.use(chaiChange)
-
 describe('Node', () => {
-  'use strict'
 
   it('exists', () => {
     expect(Node).to.be.a('function')

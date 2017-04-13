@@ -2,10 +2,7 @@ import chai, { expect } from 'chai'
 import chaiChange from 'chai-change'
 import Stack from '../src/stack'
 
-chai.use(chaiChange)
-
 describe('Stack', () => {
-  'use strict'
 
   it('exists', () => {
     expect(Stack).to.be.a('function')
@@ -59,10 +56,26 @@ describe('Stack', () => {
       expect( myStack.length()).to.equal(3)
     })
   })
+
   context('length()', () => {
     it('returns the 0 for an empty stack', () => {
       const myStack = new Stack()
       expect( myStack.length()).to.equal(0)
+    })
+  })
+
+  context('isEmpty()', () => {
+    it('returns the 0 for an empty stack', () => {
+      const myStack = new Stack()
+      expect( myStack.isEmpty() ).to.equal(true)
+    })
+  })
+
+  context('isEmpty()', () => {
+    it('returns the 0 for an empty stack', () => {
+      const myStack = new Stack()
+      myStack.push('BMW')
+      expect( myStack.isEmpty() ).to.equal(false)
     })
   })
 

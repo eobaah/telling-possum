@@ -13,7 +13,6 @@ export default class LinkedList {
     this.head = undefined
     this.tail = undefined
     this.size = 0
-
   }
 
   getHeadNode() {
@@ -30,10 +29,10 @@ export default class LinkedList {
       this.head = linkedNode
       this.tail = linkedNode
     } else {
-     this.tail.next = linkedNode
-     this.tail = linkedNode
+      this.tail.next = linkedNode
+      this.tail = linkedNode
     }
-     this.size++
+      this.size++
   }
 
   insertFirst(data) {
@@ -73,40 +72,39 @@ export default class LinkedList {
   }
 
   insertBefore(before, after) {
-  let beforeNode = new Node(before)
-  let currentNode = this.head
+    let beforeNode = new Node(before)
+    let currentNode = this.head
 
 
-  // if LinkedList is empty
-  if( this.size === 0 ) {
-    this.head = this.tail = beforeNode
-    this.size++
-  }
-
-  // if after node is at front
-  if( this.head.data === after ) {
-    this.size++
-    beforeNode.next = this.head
-    this.head = beforeNode
-  }
-
-  // if after node is in the middle
-  while( currentNode.next ) {
-    if( currentNode.next.data === after ) {
+    // if LinkedList is empty
+    if( this.size === 0 ) {
+      this.head = this.tail = beforeNode
       this.size++
-      currentNode.next = beforeNode.next
-      beforeNode.next = currentNode
-      return currentNode
     }
-    currentNode = currentNode.next
+
+    // if after node is at front
+    if( this.head.data === after ) {
+      this.size++
+      beforeNode.next = this.head
+      this.head = beforeNode
+    }
+
+    // if after node is in the middle
+    while( currentNode.next ) {
+      if( currentNode.next.data === after ) {
+        this.size++
+        currentNode.next = beforeNode.next
+        beforeNode.next = currentNode
+        return currentNode
+      }
+      currentNode = currentNode.next
+    }
+    return after + " does not exist in this linked list"
   }
-  return after + " does not exist in this linked list"
-}
 
   insertAfter(before, after) {
   let afterNode = new Node(after)
   let currentNode = this.head
-
 
   // if LinkedList is empty
   if( this.size === 0 ) {
@@ -149,58 +147,58 @@ export default class LinkedList {
   }
 
   remove() {
-      let currentNode = this.head
-      // if list is empty
-      if(this.size === 0) {
-        return "There is nothing to remove"
+    let currentNode = this.head
+    // if list is empty
+    if(this.size === 0) {
+      return "There is nothing to remove"
     }
 
-      // if list has one item
-      if (this.size === 1) {
-        this.head = this.tail = undefined
-        this.size--
-        return this
-    }
-
-      // if there is 2
-      if ( currentNode.next === this.tail) {
-        this.tail = currentNode
-        this.size--
-        return this
-    }
-      // if there is more than 2
-      while(currentNode.next.next !== this.tail) {
-        currentNode = currentNode.next
-      }
-      this.tail = currentNode.next
-      currentNode.next.next = undefined
+    // if list has one item
+    if (this.size === 1) {
+      this.head = this.tail = undefined
       this.size--
       return this
+    }
+
+    // if there is 2
+    if ( currentNode.next === this.tail) {
+      this.tail = currentNode
+      this.size--
+      return this
+    }
+
+    // if there is more than 2
+    while(currentNode.next.next !== this.tail) {
+      currentNode = currentNode.next
+    }
+    this.tail = currentNode.next
+    currentNode.next.next = undefined
+    this.size--
+    return this
   }
 
   removeFirst() {
+    // if list is empty
+    if(this.size === 0) {
+      return "There is nothing to remove"
+  }
 
-      // if list is empty
-      if(this.size === 0) {
-        return "There is nothing to remove"
+    // if list has one item
+    if (this.size === 1) {
+      this.head = this.tail = undefined
+      this.size--
+      return this
     }
 
-      // if list has one item
-      if (this.size === 1) {
-        this.head = this.tail = undefined
-        this.size--
-        return this
-    }
-
-      // if there is 2
-      if ( this.head.next ) {
-        this.head = this.head.next
-        this.size--
-        return this
+    // if there is 2
+    if ( this.head.next ) {
+      this.head = this.head.next
+      this.size--
+      return this
     }
   }
 
-  longness() {
+  length() {
     return this.size
   }
 
@@ -212,7 +210,7 @@ export default class LinkedList {
     } else {
       this.head = this.tail = undefined
       this.size = 0
-    }       
+    }
   }
 }
 
