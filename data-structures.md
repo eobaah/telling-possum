@@ -103,7 +103,7 @@ pQueue.isEmpty()             // returns true if the queue is empty or false if n
 pQueue.length()              // returns the number of elements in the queue.
 ```
 
-#### Priority Node  [x]
+### Priority Node  [x]
 
 To implement a _standard_ priority queue, use a **priority node** data structure in your implementation. You don't need to write tests for this object or expose its interface in the public API. Use this interface as a reference:
 
@@ -126,7 +126,7 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Doubly_linked_list) [edited]:
 
 > A linked data structure that consists of a set of sequentially linked records called nodes. Each node contains two fields, called _links_, that are references to the previous and to the next node in the sequence of nodes.
 
-#### Double Node  [x]
+### Double Node  [x]
 
 To implement a _standard_ doubly-linked list, use a **double node** data structure in your implementation.
 
