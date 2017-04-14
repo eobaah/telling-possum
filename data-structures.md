@@ -5,8 +5,8 @@
 
 ## Basic Data Structures
  
-- [x]
-### Node 
+
+### Node [x]
 
 A very basic data structure that can contain some value and a reference to another node. Used as a building block for many other data structures.
 
