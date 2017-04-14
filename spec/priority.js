@@ -9,17 +9,59 @@ describe('Priorityqueue', () => {
   })
 
   context('enqueue(data, priority)', () => {
-    it.only('adds an element with the lowest priority to the end of queue.', () => {
+    it('adds an element with the lowest priority to the end of queue.', () => {
       const priorityqueue = new Priorityqueue()
       priorityqueue.enqueue("Hypatia", 900)
       priorityqueue.enqueue("Aristotle", 850)
-      // console.log('small queue',priorityqueue);
-      expect( priorityqueue.tail.data ).to.equal("Aristotle")
       priorityqueue.enqueue("Plato", 800)
-      // priorityqueue.enqueue("Descartes", 820)
-      // priorityqueue.enqueue("Descartes", 600)
-      // console.log('big queue',priorityqueue);
-      // expect(priorityqueue.tail.priority).to.eql(600)
+      expect( priorityqueue.tail.data ).to.equal("Plato")
+    })
+  })
+
+  context('dequeue()', () => {
+    it('removes an element with the lowest priority from the end of queue.', () => {
+      const priorityqueue = new Priorityqueue()
+      priorityqueue.enqueue("Hypatia", 900)
+      priorityqueue.enqueue("Aristotle", 850)
+      priorityqueue.enqueue("Plato", 800)
+      expect( priorityqueue.dequeue().data ).to.equal("Hypatia")
+    })
+  })
+
+  context('front()', () => {
+    it('returns an element with the highest priority from the front of queue.', () => {
+      const priorityqueue = new Priorityqueue()
+      priorityqueue.enqueue("Hypatia", 900)
+      priorityqueue.enqueue("Aristotle", 850)
+      priorityqueue.enqueue("Plato", 800)
+      expect( priorityqueue.front().data ).to.equal("Hypatia")
+    })
+  })
+
+  context('back()', () => {
+    it('returns an element with the lowest priority from the end of queue.', () => {
+      const priorityqueue = new Priorityqueue()
+      priorityqueue.enqueue("Hypatia", 900)
+      priorityqueue.enqueue("Aristotle", 850)
+      priorityqueue.enqueue("Plato", 800)
+      expect( priorityqueue.back().data ).to.equal("Plato")
+    })
+  })
+
+  context('isEmpty()', () => {
+    it('returns true if the queue is empty.', () => {
+      const priorityqueue = new Priorityqueue()
+      expect( priorityqueue.isEmpty() ).to.equal(true)
+    })
+  })
+
+  context('length()', () => {
+    it.only('returns the number of nodes in the queue.', () => {
+      const priorityqueue = new Priorityqueue()
+      priorityqueue.enqueue("Hypatia", 900)
+      priorityqueue.enqueue("Aristotle", 850)
+      priorityqueue.enqueue("Plato", 800)
+      expect( priorityqueue.length() ).to.equal(3)
     })
   })
 
