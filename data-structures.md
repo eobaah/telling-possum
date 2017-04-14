@@ -1,10 +1,12 @@
-# Core Data Structures
+# Telling-Possum
+#Core Data Structures
 
 [Basic](#basic-data-structures) | [Advanced](#advanced-data-structures)
 
 ## Basic Data Structures
-
- - [x] ### Node 
+ 
+ # - [x]
+### Node 
 
 A very basic data structure that can contain some value and a reference to another node. Used as a building block for many other data structures.
 
