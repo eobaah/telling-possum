@@ -10,8 +10,8 @@ export default class Prioritynode {
     return this.data
   }
 
-  setPriority(priority) {
-    this.priority = priority
+  setPriority(newPriority) {
+    this.priority = newPriority
     return this
   }
 

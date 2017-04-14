@@ -11,8 +11,7 @@ describe('Prioritynode', () => {
   context('getData()', () => {
     it('returns the data within the node.', () => {
       const myPrioritynode = new Prioritynode("apple", 300)
-      myPrioritynode.getData()
-      expect( myPrioritynode.data.data ).to.equal("apple")
+      expect( myPrioritynode.getData() ).to.equal("apple")
     })
   })
 
@@ -61,7 +60,7 @@ describe('Prioritynode', () => {
   })
 
   context('getPrev()', () => {
-    it.only('return the previous node.', () => {
+    it('return the previous node.', () => {
       const myPrioritynodeA = new Prioritynode("BMW", 300)
       const myPrioritynodeB = new Prioritynode("Tesla", 900)
       myPrioritynodeA.setNext(myPrioritynodeB)

@@ -1,12 +1,12 @@
 class Node {
   constructor(data) {
     this.data = data;
-    this.next = undefined;
+    this.next = null;
   }
 }
 
 export default class Queue {
-  constructor(data) {
+  constructor() {
     this.head = null;
     this.tail = null;
     this.size = 0;
@@ -63,12 +63,3 @@ export default class Queue {
   }
 
 }
-
-const queue = new Queue()
-
-queue.enqueue("Plato") // adds an element (the string "foo") to the back of the queue.
-queue.dequeue() // returns and removes the front element in the queue or null if the queue is empty.
-queue.front() // returns the front element in queue or null if the queue is empty.
-queue.back() // returns the back element in the queue or null if the queue is empty.
-queue.isEmpty() // returns true if the queue is empty or false if not.
-queue.length() // returns the number of elements in the queue
