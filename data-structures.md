@@ -1,5 +1,5 @@
 # Telling-Possum
-#Core Data Structures
+# Core Data Structures
 
 [Basic](#basic-data-structures) | [Advanced](#advanced-data-structures)
 
