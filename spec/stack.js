@@ -2,10 +2,7 @@ import chai, { expect } from 'chai'
 import chaiChange from 'chai-change'
 import Stack from '../src/stack'
 
-chai.use(chaiChange)
-
 describe('Stack', () => {
-  'use strict'
 
   it('exists', () => {
     expect(Stack).to.be.a('function')
@@ -14,7 +11,6 @@ describe('Stack', () => {
   context('push()', () => {
     it('pushes an element to the top of the stack.', () => {
       const myStack = new Stack()
-
       expect(() => myStack.push('foo'))
         .to.alter(() => myStack.length(), { from: 0, to: 1 })
     })
@@ -26,7 +22,6 @@ describe('Stack', () => {
       myStack.push('foo')
       myStack.push('fred')
       myStack.push('BMW')
-
       expect(() => myStack.pop())
         .to.alter(() => myStack.length(), { from: 3, to: 2 })
     })
@@ -35,16 +30,12 @@ describe('Stack', () => {
   context('peek()', () => {
     it('returns the top element in the stack.', () => {
       const myStack = new Stack()
-      // myStack.push('foo')
-      // myStack.push('fred')
       myStack.push('BMW')
-
       expect( myStack.peek().data).to.equal('BMW')
     })
 
     it('returns null if the stack is empty.', () => {
       const myStack = new Stack()
-
       expect(myStack.peek()).to.equal(null)
     })
   })
@@ -55,10 +46,10 @@ describe('Stack', () => {
       myStack.push('foo')
       myStack.push('fred')
       myStack.push('BMW')
-
       expect( myStack.length()).to.equal(3)
     })
   })
+
   context('length()', () => {
     it('returns the 0 for an empty stack', () => {
       const myStack = new Stack()
@@ -66,6 +57,18 @@ describe('Stack', () => {
     })
   })
 
+  context('isEmpty()', () => {
+    it('returns the 0 for an empty stack', () => {
+      const myStack = new Stack()
+      expect( myStack.isEmpty() ).to.equal(true)
+    })
+  })
 
-
+  context('isEmpty()', () => {
+    it('returns the 0 for an empty stack', () => {
+      const myStack = new Stack()
+      myStack.push('BMW')
+      expect( myStack.isEmpty() ).to.equal(false)
+    })
+  })
 })

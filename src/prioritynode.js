@@ -1,12 +1,18 @@
-export default class Node {
-  constructor(data) {
+export default class Prioritynode {
+  constructor(data, priority) {
     this.data = data
+    this.priority = priority
     this.next = undefined
     this.prev = undefined
   }
 
   getData() {
     return this.data
+  }
+
+  setPriority(newPriority) {
+    this.priority = newPriority
+    return this
   }
 
   setNext(node) {
@@ -19,6 +25,10 @@ export default class Node {
     return this
   }
 
+  getPriority() {
+    return this.priority
+  }
+
   getNext() {
     return this.next
   }
@@ -28,6 +38,3 @@ export default class Node {
   }
 
 }
-
-  const nodeA = new Node({data: "apple"})
-  const nodeB = new Node({data: "banana"})

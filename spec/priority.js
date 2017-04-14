@@ -1,147 +1,122 @@
 import chai, { expect } from 'chai'
 import chaiChange from 'chai-change'
-import Priority from '../src/priority'
+import Priorityqueue from '../src/priority'
 
-chai.use(chaiChange)
-
-describe('pQueue', () => {
-  'use strict'
+describe('Priorityqueue', () => {
 
   it('exists', () => {
-    expect(pQueue).to.be.a('function')
+    expect(Priorityqueue).to.be.a('function')
   })
 
-  context('enqueue()', () => {
-    it('Adds an element with priority number to the back of the queue.', () => {
-      const mypQueue = new pQueue()
-      mypQueue.enqueue("foo", 100)
-      expect((mypQueue.head.data)).to.equal("foo")
+  context('enqueue(data, priority)', () => {
+    it('adds an element with the lowest priority to the end of queue.', () => {
+      const priorityqueue = new Priorityqueue()
+      priorityqueue.enqueue("Hypatia", 900)
+      priorityqueue.enqueue("Aristotle", 850)
+      priorityqueue.enqueue("Plato", 800)
+      expect( priorityqueue.tail.data ).to.equal("Plato")
     })
   })
 
   context('dequeue()', () => {
-    it('Removes an element from the front of the queue.', () => {
-      const dequeue = new Queue()
-      dequeue.enqueue("foo")
-      expect(dequeue.dequeue().data).to.equal("foo")
+    it('removes an element with the lowest priority from the end of queue.', () => {
+      const priorityqueue = new Priorityqueue()
+      priorityqueue.enqueue("Hypatia", 900)
+      priorityqueue.enqueue("Aristotle", 850)
+      priorityqueue.enqueue("Plato", 800)
+      expect( priorityqueue.dequeue().data ).to.equal("Hypatia")
     })
   })
 
   context('front()', () => {
-    it('Returns the front element in queue', () => {
-      const front = new Queue()
-      front.enqueue("foo")
-      expect(front.front().data).to.equal("foo")
-    })
-  })
-
-  context('front()', () => {
-    it('Check the front and returns null if the queue is empty', () => {
-      const front = new Queue()
-      expect(front.front()).to.equal(null)
+    it('returns an element with the highest priority from the front of queue.', () => {
+      const priorityqueue = new Priorityqueue()
+      priorityqueue.enqueue("Hypatia", 900)
+      priorityqueue.enqueue("Aristotle", 850)
+      priorityqueue.enqueue("Plato", 800)
+      expect( priorityqueue.front().data ).to.equal("Hypatia")
     })
   })
 
   context('back()', () => {
-    it('Returns the back element in the queue.', () => {
-      const back = new Queue()
-      back.enqueue("foo")
-      expect(back.back().data).to.equal("foo")
-    })
-  })
-
-  context('back()', () => {
-    it('Returns null for the back element of an empty queue.', () => {
-      const back = new Queue()
-      expect(back.back()).to.equal(null)
+    it('returns an element with the lowest priority from the end of queue.', () => {
+      const priorityqueue = new Priorityqueue()
+      priorityqueue.enqueue("Hypatia", 900)
+      priorityqueue.enqueue("Aristotle", 850)
+      priorityqueue.enqueue("Plato", 800)
+      expect( priorityqueue.back().data ).to.equal("Plato")
     })
   })
 
   context('isEmpty()', () => {
-    it('Returns false if the queue is not empty. ', () => {
-      const isEmpty = new Queue()
-      isEmpty.enqueue('foo')
-      expect(isEmpty.isEmpty()).to.equal(false);
-    })
-  })
-
-  context('isEmpty()', () => {
-    it('Returns true if the queue is empty. ', () => {
-      const isEmpty = new Queue()
-      expect(isEmpty.isEmpty()).to.equal(true);
+    it('returns true if the queue is empty.', () => {
+      const priorityqueue = new Priorityqueue()
+      expect( priorityqueue.isEmpty() ).to.equal(true)
     })
   })
 
   context('length()', () => {
-    it('returns the number of elements in the queue ', () => {
-      const length = new Queue()
-      length.enqueue("foo")
-      length.enqueue("roo")
-      expect(length.length()).to.equal(2);
+    it.only('returns the number of nodes in the queue.', () => {
+      const priorityqueue = new Priorityqueue()
+      priorityqueue.enqueue("Hypatia", 900)
+      priorityqueue.enqueue("Aristotle", 850)
+      priorityqueue.enqueue("Plato", 800)
+      expect( priorityqueue.length() ).to.equal(3)
     })
   })
-  //
-  // context('isEmpty()', () => {
-  //   it('Returns True, if the queue is empty or false if not. ', () => {
-  //     const isEmpty = new Queue()
-  //     expect((isEmpty.back()).to.equal(null))
-  //   })
-  // })
 
-
-
-
-
-
-
-
-  //
-  // context('pop()', () => {
-  //   it('removes an element at the top of the stack.', () => {
-  //     const myStack = new Stack()
-  //     myStack.push('foo')
-  //     myStack.push('fred')
-  //     myStack.push('BMW')
-  //
-  //     expect(() => myStack.pop())
-  //       .to.alter(() => myStack.length(), { from: 3, to: 2 })
+  // context('setPriority(priority)', () => {
+  //   it('set the priority for node and return the node object.', () => {
+  //     const myPrioritynode = new Prioritynode("BMW", 200)
+  //     myPrioritynode.setPriority(400)
+  //     expect( myPrioritynode.priority ).to.equal(400)
   //   })
   // })
   //
-  // context('peek()', () => {
-  //   it('returns the top element in the stack.', () => {
-  //     const myStack = new Stack()
-  //     // myStack.push('foo')
-  //     // myStack.push('fred')
-  //     myStack.push('BMW')
-  //
-  //     expect( myStack.peek().data).to.equal('BMW')
-  //   })
-  //
-  //   it('returns null if the stack is empty.', () => {
-  //     const myStack = new Stack()
-  //
-  //     expect(myStack.peek()).to.equal(null)
+  // context('setNext(node)', () => {
+  //   it('set the next node for the current node and return the node object.', () => {
+  //     const myPrioritynodeA = new Prioritynode("BMW", 300)
+  //     const myPrioritynodeB = new Prioritynode("Tesla", 400)
+  //     myPrioritynodeA.setNext(myPrioritynodeB)
+  //     expect( myPrioritynodeA.next.data ).to.equal("Tesla")
   //   })
   // })
   //
-  // context('length()', () => {
-  //   it('returns the number of elements in the stack.', () => {
-  //     const myStack = new Stack()
-  //     myStack.push('foo')
-  //     myStack.push('fred')
-  //     myStack.push('BMW')
-  //
-  //     expect( myStack.length()).to.equal(3)
-  //   })
-  // })
-  // context('length()', () => {
-  //   it('returns the 0 for an empty stack', () => {
-  //     const myStack = new Stack()
-  //     expect( myStack.length()).to.equal(0)
+  // context('setPrev(node)', () => {
+  //   it('set the previous node for the current node and return the node object.', () => {
+  //     const myPrioritynodeA = new Prioritynode("BMW", 300)
+  //     const myPrioritynodeB = new Prioritynode("Tesla", 400)
+  //     myPrioritynodeB.setPrev(myPrioritynodeA)
+  //     expect( myPrioritynodeB.prev.data ).to.equal("BMW")
   //   })
   // })
   //
-
+  // context('getPriority()', () => {
+  //   it('return the priority of the node.', () => {
+  //     const myPrioritynodeA = new Prioritynode("Mercedes", 500)
+  //     const myPrioritynodeB = new Prioritynode("Plato", 200)
+  //     expect( myPrioritynodeA.getPriority() ).to.equal(500)
+  //   })
+  // })
+  //
+  // context('getNext()', () => {
+  //   it('return the next node.', () => {
+  //     const myPrioritynodeA = new Prioritynode("BMW", 300)
+  //     const myPrioritynodeB = new Prioritynode("Tesla", 900)
+  //     myPrioritynodeA.setNext(myPrioritynodeB)
+  //     myPrioritynodeA.getNext()
+  //     expect( myPrioritynodeA.getNext().data ).to.equal("Tesla")
+  //   })
+  // })
+  //
+  // context('getPrev()', () => {
+  //   it.only('return the previous node.', () => {
+  //     const myPrioritynodeA = new Prioritynode("BMW", 300)
+  //     const myPrioritynodeB = new Prioritynode("Tesla", 900)
+  //     myPrioritynodeA.setNext(myPrioritynodeB)
+  //     myPrioritynodeB.setPrev(myPrioritynodeA)
+  //     expect( myPrioritynodeB.getPrev().data ).to.equal("BMW")
+  //   })
+  // })
 
 })

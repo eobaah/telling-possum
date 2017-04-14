@@ -1,4 +1,9 @@
-'use strict'
+class Node {
+  constructor(data) {
+    this.data = data
+    this.next = null;
+  }
+}
 
 export default class Stack {
 
@@ -45,13 +50,6 @@ export default class Stack {
     return this.size;
   }
 
-}
-
-class Node {
-  constructor(data) {
-    this.data = data
-    this.next = null;
-  }
 }
 
 const bayarea = new Stack()
