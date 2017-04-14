@@ -19,7 +19,7 @@ nodeA.setNext(nodeB)  // changes the reference to the next node and returns the 
 nodeA.getNext()       // returns the next node, or null if no next node
 ```
 
-### Linked List ( using Nodes )
+### Linked List ( using Nodes ) [x]
 
 A list of [nodes](#node) that link to each other, like a daisy-chain.
 
@@ -46,7 +46,7 @@ linkedList.size()                  // Returns the size of the list (number of no
 linkedList.clear()                 // Clears the list of all nodes/data
 ```
 
-### Stack ( using Nodes )
+### Stack ( using Nodes ) [x]
 
 The classic LIFO (Last-In-First-Out) one-dimensional list.
 
@@ -65,7 +65,7 @@ stack.length()    // returns the number of elements in the stack.
 
 To implement a _standard_ stack, use the [Node](#node) data structure in your implementation.
 
-### Queue ( using Nodes )
+### Queue ( using Nodes ) [x]
 
 The classic FIFO (First-In-First-Out) one-dimensional list.
 
@@ -85,7 +85,7 @@ queue.length()       // returns the number of elements in the queue
 
 To implement a _standard_ queue, use the [Node](#node) data structure in your implementation.
 
-### Priority Queue ( using Priority Nodes )
+### Priority Queue ( using Priority Nodes )  [x]
 
 Like a queue, but with _priorities_.
 
@@ -103,7 +103,7 @@ pQueue.isEmpty()             // returns true if the queue is empty or false if n
 pQueue.length()              // returns the number of elements in the queue.
 ```
 
-#### Priority Node
+#### Priority Node  [x]
 
 To implement a _standard_ priority queue, use a **priority node** data structure in your implementation. You don't need to write tests for this object or expose its interface in the public API. Use this interface as a reference:
 
@@ -118,7 +118,7 @@ pizzaNode.setNext(saladNode)  // changes the reference to the next node and retu
 pizzaNode.getNext()           // returns the next node or null if none
 ```
 
-### Doubly-Linked List ( using Double Nodes )
+### Doubly-Linked List ( using Double Nodes ) 
 
 The interface for the Doubly-Linked List is the same as the Linked List above, _except_ that it uses a double-link node (see below).
 
@@ -126,7 +126,7 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Doubly_linked_list) [edited]:
 
 > A linked data structure that consists of a set of sequentially linked records called nodes. Each node contains two fields, called _links_, that are references to the previous and to the next node in the sequence of nodes.
 
-#### Double Node
+#### Double Node  [x]
 
 To implement a _standard_ doubly-linked list, use a **double node** data structure in your implementation.
 
